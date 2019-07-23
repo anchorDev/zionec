@@ -1,0 +1,520 @@
+@import 'var';
+@import 'mixins';
+@import 'plugins';
+@import 'fonts';
+@import 'elements';
+
+body {
+  font: 14px/20px "Roboto", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  max-width: 1213px;
+  padding: 0 15px;
+  margin: 0 auto;
+
+  @include media("<=xl") {
+    padding: 0 30px 0 15px;
+  }
+
+  @include media("<=md") {
+    padding: 0 26px;
+  }
+
+  @include media("<=sm") {
+    padding: 17px;
+  }
+}
+
+.header {
+  position: relative;
+
+  &__top-menu {
+    padding-top: 11px;
+    padding-bottom: 12px;
+
+    @include media("<=md") {
+      padding-top: 22px;
+      padding-bottom: 18px;
+    }
+
+    @include media("<=sm") {
+      padding-top: 15px;
+      padding-bottom: 11px;
+    }
+
+    &:before {
+      content: '';
+      height: 41px;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background-color: $nav-top-bg;
+
+      @include media("<=md") {
+        height: 100%;
+      }
+    }
+  }
+
+  &__middle-section {
+    padding-top: 23px;
+    padding-bottom: 28px;
+  }
+
+  &__bottom-menu {
+    padding-top: 5px;
+    padding-bottom: 8px;
+    &:before {
+      content: '';
+      height: 50px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      background-color: $nav-bottom-bg;
+    }
+  }
+}
+
+//top of header
+
+.top-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @include media("<=md") {
+    border-bottom: 4px solid $nav-bottom-bg;
+    align-items: center;
+  }
+
+  &__nav-main{
+    flex: 1;
+  }
+
+  &__dropdown-btn {
+    margin-left: 28px;
+
+    @include media("<=sm") {
+      margin-left: 0;
+    }
+  }
+
+  &__logo {
+    width: 174px;
+    margin: 0 auto;
+
+    @include media(">=1025px") {
+      display: none;
+    }
+
+    @include media("<=sm") {
+      width: 100px;
+    }
+  }
+}
+
+.region {
+  cursor: pointer;
+
+  @include media("<=md") {
+    display: none;
+  }
+
+  &:hover {
+    .region__icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__title {
+    font-size: 14px;
+    line-height: 16px;
+    color: $c-nav-main;
+  }
+  &__icon {
+    @include size(7px,5px);
+    display: inline-block;
+    background: url("../img/icons/arrow_down.png") center no-repeat;
+    vertical-align: middle;
+    transition: all .3s linear;
+  }
+}
+
+.cabinet {
+  margin: 0 -32px;
+  display: flex;
+  flex-wrap: wrap;
+
+  @include media("<=xl") {
+    margin: 0 -30px;
+  }
+
+  @include media("<=xl") {
+    margin: 0;
+  }
+
+  &__login,&__favorite,&__card {
+    display: inline-block;
+    margin: 0 16px;
+
+    @include media("<=xl") {
+      margin: 0 12px;
+    }
+  }
+
+  &__login {
+    @include media("<=md") {
+      margin-left: 26px;
+    }
+
+    @include media("<=sm") {
+      display: none;
+    }
+  }
+
+  &__favorite {
+    @include size(24px,17px);
+    background: url("../img/icons/favorites.png") center no-repeat;
+    background-size: cover;
+
+    @include media("<=sm") {
+      display: none;
+    }
+  }
+
+  &__card {
+    @include size(22px,19px);
+    background: url("../img/icons/cart.png") center no-repeat;
+    background-size: cover;
+
+    @include media("<=xl") {
+      margin-right: 0;
+    }
+
+    @include media("<=sm") {
+      margin-left: -4px;
+    }
+  }
+}
+
+.login {
+  text-decoration: none;
+
+  &__icon {
+    display: inline-block;
+    @include size(24px, 20px);
+    background: url("../img/icons/avatar.png") center no-repeat;
+    background-size: cover;
+    vertical-align: bottom;
+  }
+
+  &__title {
+    font-size: 14px;
+    line-height: 16px;
+    color: $c-nav-main;
+    font-weight: 600;
+
+    @include media("<=md") {
+      display: none;
+    }
+  }
+}
+
+.nav-main {
+  display: flex;
+  justify-content: center;
+
+  @include media("<=md") {
+    display: none;
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__list-item {
+    margin: 0 12px;
+  }
+
+  &__link {
+    padding: 0 11.5px;
+    font-size: 14px;
+    line-height: 16px;
+    color: $c-nav-main;
+    text-decoration: none;
+    position: relative;
+  }
+}
+
+//center   of header
+.middle-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  @include media("<=md") {
+    display: none;
+  }
+
+  &__logo {
+    margin-right: 6%;
+
+    @include media("<=lg") {
+      width: 15vw;
+      margin-right: 0;
+    }
+
+  }
+
+  &__description {
+    margin-right: auto;
+
+    @include media("<=lg") {
+      margin-left: auto;
+    }
+  }
+
+  &__number {
+    margin-right: -15px;
+  }
+}
+
+.description {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item {
+  margin: 0 29px;
+
+  @include media("<=lg") {
+    margin: 0 10px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__icon {
+    width: 28px;
+    float: left;
+    margin-right: 10px;
+
+    &--number {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 35px;
+      color: $c-nav-blue;
+    }
+  }
+
+  &__title {
+    float: left;
+    font-size: 12px;
+    line-height: 16px;
+    color: $c-nav-gray;
+  }
+
+  &__blue-text {
+    color: $c-nav-blue;
+  }
+}
+
+.number {
+  &__link {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 28px;
+    color: $c-nav-main;
+    text-decoration: none;
+  }
+
+  &__text {
+    font-size: 12px;
+    line-height: 14px;
+    text-align: right;
+    color: $c-nav-gray;
+
+    &--top {
+      position: relative;
+      top: -3px;
+    }
+
+    &--bottom {
+      color: $c-nav-orange;
+      font-size: 14px;
+    }
+  }
+}
+
+//bottom of header
+
+.bottom-menu {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include media("<=md") {
+    display: none;
+  }
+
+  &__search {
+    margin-right: 30px;
+  }
+
+  &__dropdown-btn {
+    margin-right: 25px;
+  }
+
+  &__doc-appointment {
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    background-color: $c-nav-orange;
+    font-size: 14px;
+    line-height: 16px;
+    color: $c-nav-white;
+    width: 175px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    position: relative;
+    right: -15px;
+  }
+
+  &__departments {
+    margin: 0 -9.5px;
+
+    @include media("<=xl") {
+      margin: 0 auto;
+    }
+  }
+}
+
+.departments {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__list {
+    display: flex;
+  }
+
+  &__list-item {
+    margin: 0 9.5px;
+
+    @include media("<=xl") {
+      &:last-child {
+        display: none;
+      }
+    }
+
+    @include media("<=1070px") {
+      &:nth-child(4) {
+        display: none;
+      }
+    }
+  }
+
+  &__link {
+    padding: 0 7px;
+    font-size: 14px;
+    line-height: 16px;
+    color: $c-nav-white;
+    text-decoration: none;
+    position: relative;
+  }
+
+}
+
+.dropdown-btn {
+  cursor: pointer;
+
+  @include media("<=md") {
+    display: none;
+  }
+
+  &--mobile {
+    display: none;
+
+    @include media("<=md") {
+      display: block;
+    }
+  }
+
+  &__icon {
+    margin-top: 10px;
+    display: inline-block;
+
+    @include media("<=md") {
+      margin-top: -1px;
+    }
+  }
+
+  &__title {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 16px;
+    color: $c-nav-main;
+    font-weight: 600;
+    margin-left: 6px;
+
+    @include media("<=sm") {
+      display: none;
+    }
+  }
+}
+
+.search {
+  cursor: pointer;
+
+  @include media("<=md") {
+    display: none;
+  }
+
+  &--mobile {
+    display: none;
+
+    @include media("<=md") {
+      display: block;
+    }
+
+    @include media("<=sm") {
+      display: none;
+    }
+  }
+
+  &__icon {
+    margin-top: 10px;
+
+    @include media("<=md") {
+      margin-top: 4px;
+    }
+  }
+}
+
+.main-banner {
+  background-size: 102%;
+  background: url(../img/bg/legs-bg.png) no-repeat center;
+  width: 100%;
+  height: 70.5vh;
+  position: relative;
+  padding: 153px 0 0;
+}
